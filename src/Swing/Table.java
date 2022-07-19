@@ -2,17 +2,16 @@ package Swing;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
+import java.awt.event.*;
 import java.awt.*;
 
-public class SimpleCRUD {
+public class Table {
 
-    JFrame frame = new JFrame("Simple CRUD");
-    JPanel panel = new JPanel();
+    JFrame frame = new JFrame("Table CRUD");
     JTable table = new JTable();
     JScrollPane scrollpane = new JScrollPane();
 
-    public SimpleCRUD() {
+    public Table() {
         Dimension min = new Dimension(500, 500);
         Dimension max = new Dimension(520, 520);
 
@@ -26,6 +25,7 @@ public class SimpleCRUD {
 
         scrollpane.setBounds(50, 50, 400, 400);
 
+        // Table
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.addColumn("Name");
         model.addColumn("Age");
@@ -40,9 +40,17 @@ public class SimpleCRUD {
 
         frame.add(scrollpane);
         frame.setVisible(true);
+
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                frame.dispose();
+                new LoginForm();
+            }
+        });
+
     }
 
     public static void main(String[] args) {
-        new SimpleCRUD();
+        new Table();
     }
 }
