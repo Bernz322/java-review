@@ -2,8 +2,7 @@ package OOP;
 
 public class Interface {
     /**
-     * Completely similar to abstraction but methods are empty.
-     * I use this mostly as the concept is imilar to interfaces in Typescript
+     * Completely similar to abstraction where methods are completely empty.
      */
 
     static interface Animal {

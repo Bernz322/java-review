@@ -1,22 +1,24 @@
 package Swing;
 
 import javax.swing.*;
+
+import Swing.DB.LoginConnection;
+
 import java.awt.event.*;
 import java.awt.*;
 
 public class LoginForm {
 
-    JFrame frame = new JFrame("Login");
+    public static JFrame frame = new JFrame("Login");
     JButton login = new JButton("Login");
     JLabel username_label = new JLabel("Username");
     JLabel password_label = new JLabel("Password");
-    JTextField username_field = new JTextField();
-    JPasswordField password_field = new JPasswordField();
+    public static JTextField username_field = new JTextField();
+    public static JPasswordField password_field = new JPasswordField();
+
+    LoginConnection lc = new LoginConnection();
 
     public LoginForm() {
-        String username_admin = "admin";
-        String password_admin = "admin";
-
         Dimension min = new Dimension(250, 250);
         Dimension max = new Dimension(250, 250);
 
@@ -58,14 +60,7 @@ public class LoginForm {
             public void actionPerformed(ActionEvent e) {
                 String username = username_field.getText();
                 String password = new String(password_field.getPassword());
-
-                if (username.equals(username_admin) && password.equals(password_admin)) {
-                    JOptionPane.showMessageDialog(null, "Admin Access Granted");
-                    frame.dispose();
-                    new Table();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Wrong credentials!");
-                }
+                lc.SignIn(username, password);
             }
         });
 
